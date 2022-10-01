@@ -2,7 +2,7 @@ class ListsController < ApplicationController
   def new
     @list = List.new
   end
-  
+
   def create
     list =List.new(list_params)
     list.save
@@ -10,6 +10,7 @@ class ListsController < ApplicationController
   end
 
   def index
+    @list =List.all
   end
 
   def show
@@ -17,9 +18,9 @@ class ListsController < ApplicationController
 
   def edit
   end
-  
+
   private
     def list_params
-      params.require(:list).parmit(:title, :body)
+      params.require(:list).permit(:title, :body)
     end
 end
